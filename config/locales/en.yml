@@ -1,0 +1,24 @@
+en:
+    site:
+        validation:
+            subdomain:
+                presence: "Please supply a subdomain for this site."
+                uniqueness: "The subdomain is already in use."
+            title: "Please supply a title for this site."
+            email: "An email address is required."
+            password: "The password may not be blank."
+        default:
+            title: "Untitled"
+    item:
+        validation:
+            name: "Please provide a name for this item."
+            site_id: "An item must belong to a site."
+            alphabet_letter: "An item must have an alphabet_letter."
+    itemfield:
+        validation:
+            name: "Please provide a name for this item field."
+        cannot_be_removed: "This item field is required and cannot be removed."
+        required_itemfield_list: "Category, Collection, Condition"
+    fieldoption:
+        validation:
+            name: "Please provide a name for this field option."
