@@ -1,0 +1,7 @@
+<%= form_tag({controller: :items, action: :update}) do |f| %>
+    <%= hidden_field_tag 'id', encrypt(@item.id) %>
+    <%= text_field_tag('item[name]', @item.name) %>
+    <%= text_field_tag('item[collectionid]', @item.collectionid) %>
+    <%= text_area_tag('item[note]', @item.note) %>
+    <%= submit_tag("Update") %>
+<% end %>

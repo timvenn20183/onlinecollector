@@ -1,0 +1,12 @@
+<input type="text" id="email" name="email" value="<%= user.email %>">
+<input type="password" id="password" name="password">
+<input type="password" id="config" name="confirm">
+<input type="text" id="subdomain" name="subdomain" value="<%= site.subdomain %>">
+
+<% if !site.errors.blank? then %>
+    <%= site.errors.messages %>
+<% end %>
+<% if !user.errors.blank? then %>
+    <%= user.errors.messages %>
+<% end %>
+
