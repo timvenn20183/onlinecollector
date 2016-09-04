@@ -30,6 +30,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'carrierwave'
 gem 'friendly_id'
 gem 'paper_trail'
+gem 'bootstrap', '~> 4.0.0.alpha3.1'
+gem 'rails-assets-tether', '>= 1.1.0'
+gem 'whois', '~> 3.0'
+gem 'mail'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

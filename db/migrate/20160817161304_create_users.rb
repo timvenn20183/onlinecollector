@@ -4,8 +4,9 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :email
       t.string :password
       t.integer :site_id
-      t.integer :role
+      t.integer :role, :default => 1
       t.string :appkey
+      t.integer :login_failures => 0
       t.timestamps
     end
   end

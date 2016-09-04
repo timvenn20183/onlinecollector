@@ -1,12 +1,17 @@
 en:
+    user:
+        validation:
+            password_not_match: "Password do not match"
+            email: "A valid email address is required."
+            password: "The password may not be blank."
+            emailexists: "This email address is already in use."
+            password_issue: "Please check the complexity of your password"
     site:
         validation:
             subdomain:
                 presence: "Please supply a subdomain for this site."
                 uniqueness: "The subdomain is already in use."
             title: "Please supply a title for this site."
-            email: "An email address is required."
-            password: "The password may not be blank."
         default:
             title: "Untitled"
     item:
@@ -22,3 +27,8 @@ en:
     fieldoption:
         validation:
             name: "Please provide a name for this field option."
+    forms:
+        signup:
+            button: "Create collection"
+        signin:
+            button: "Sign in"

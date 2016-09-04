@@ -10,3 +10,8 @@ def decrypt(value)
     return code.decrypt_and_verify(value.to_s)
 end
 
+def encode(value)
+    return nil if value.blank?
+    return Digest::MD5.hexdigest(value)
+end
+

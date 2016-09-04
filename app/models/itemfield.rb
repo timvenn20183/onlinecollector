@@ -8,7 +8,7 @@ class Itemfield < ApplicationRecord
     has_many :fieldoptions, dependent: :destroy
     has_many :items, through: :fieldoptions
 
-    friendly_id :name, use: :slugged
+    friendly_id :name, use: :scoped, scope: :site_id
 
     validates :name, presence: {message: I18n.t('itemfield.validation.name')}
     validates :name, uniqueness: {scope: :site_id}

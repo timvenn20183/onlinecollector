@@ -8,7 +8,7 @@ class Fieldoption < ApplicationRecord
     belongs_to :itemfield, required: true
     has_and_belongs_to_many :items
 
-    friendly_id :name, use: :slugged
+    friendly_id :name, use: :scoped, scope: :site_id
 
     validates :name, presence: {message: I18n.t('fieldoption.validation.name')}
     validates :name, uniqueness: {scope: [:site_id, :itemfield_id]}

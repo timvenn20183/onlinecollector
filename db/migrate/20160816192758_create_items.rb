@@ -7,7 +7,8 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.integer :site_id
       t.date :acquired_date
       t.date :removed_date
-
+      t.string :collectionid
+      t.text :note
       t.timestamps
     end
   end

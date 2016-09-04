@@ -3,7 +3,10 @@
 one:
   subdomain: MyString
   title: MyString
+  tracking_code: MyString
 
 two:
   subdomain: MyString
   title: MyString
+  tracking_code: MyString
+

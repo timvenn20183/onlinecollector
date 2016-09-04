@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20160817161304) do
     t.integer  "site_id"
     t.date     "acquired_date"
     t.date     "removed_date"
+    t.string   "collectionid"
+    t.text     "note"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
@@ -62,20 +64,21 @@ ActiveRecord::Schema.define(version: 20160817161304) do
   create_table "sites", force: :cascade do |t|
     t.string   "subdomain"
     t.string   "title"
-    t.boolean  "activated",     default: false
     t.string   "activationkey"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.text     "prefs"
+    t.text     "tracking_code"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password"
     t.integer  "site_id"
-    t.integer  "role"
+    t.integer  "role",       default: 1
     t.string   "appkey"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "versions", force: :cascade do |t|
