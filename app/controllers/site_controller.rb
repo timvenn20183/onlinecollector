@@ -3,7 +3,6 @@ class SiteController < ApplicationController
     layout :select_layout
 
     before_filter :check_site, :except => [:signup, :signup_process, :signin, :signin_process, :index]
-    before_filter :must_be_logged_in, :only => [:profile]
 
     def index
         if current_site == nil then
@@ -72,10 +71,6 @@ class SiteController < ApplicationController
             set_session(user)
         end
         redirect_to '/'
-    end
-
-    def profile
-        render :text => 'profile stub'
     end
 
     private

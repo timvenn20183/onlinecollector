@@ -1,3 +1,1 @@
-<% @items.each do |i| %>
-    <%= i.name %>
-<% end %>
+<%= render 'items/index', :locals => { :items => @items} %>

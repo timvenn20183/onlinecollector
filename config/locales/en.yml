@@ -19,6 +19,12 @@ en:
             name: "Please provide a name for this item."
             site_id: "An item must belong to a site."
             alphabet_letter: "An item must have an alphabet_letter."
+        edit:
+            error: "The item could not be saved. Please check the fields below."
+        string:
+            collectionid: "Collection ID"
+            name: "Name"
+            note: "Note"
     itemfield:
         validation:
             name: "Please provide a name for this item field."
@@ -32,3 +38,4 @@ en:
             button: "Create collection"
         signin:
             button: "Sign in"
+

@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
         @items = current_site.fieldoptions.find_by_slug(fieldoption).items if fieldoption != nil
         @items = current_site.itemfields.find_by_slug(itemfield).items if itemfield != nil
         @items = current_site.items if fieldoption == nil and itemfield == nil
-        render :text => @items.to_json
     end
 
     def show
@@ -36,11 +35,13 @@ class ItemsController < ApplicationController
 
     def update
         @item = Item.find_by_id(decrypt(params[:id]))
-        if @item.update_attributes(item_params)
-            render :text => @item.inspect
-        else
-            render :text => @item.errors.inspect
+        @item.update_attributes(item_params)
+        options = []
+        params[:fields].each_pair do |key,value|
+            options << Itemfield.find(decrypt(key)).update_fieldoptions_from_string(value) if !key.blank?
         end
+        @item.fieldoptions = options.flatten
+        render action: :edit
     end
 
     private

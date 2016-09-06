@@ -31,6 +31,14 @@ class Itemfield < ApplicationRecord
       return itemfields
     end
 
+    def update_fieldoptions_from_string(options)
+        results = []
+        options.split(",").each do |opt|
+            results << Fieldoption.find_or_create_by(name: opt.strip, itemfield_id: self.id, site_id: self.site_id)
+        end
+        return results
+    end
+
     private
 
     def set_defaults

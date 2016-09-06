@@ -13,6 +13,7 @@ class Item < ApplicationRecord
     validates :name, presence: {message: I18n.t('item.validation.name')}
 
     before_validation :set_defaults, prepend: true
+    after_create :set_collectionid
 
     public
 
@@ -23,4 +24,8 @@ class Item < ApplicationRecord
         self.slug = nil
     end
 
+    def set_collectionid
+        self.collectionid = self.id if self.collectionid.blank?
+        self.save
+    end
 end
