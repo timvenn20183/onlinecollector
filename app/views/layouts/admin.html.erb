@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= current_site.title %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+<br/>
+<div class="container-fuild" id="menu">
+    <div class="col-sm-2">
+        <%= render partial: 'admin/menu' %>
+    </div>
+    <div class="col-sm-10">
+        <div class="row" id="content">
+            <%= yield %>
+        </div>
+    </div>
+</div>
+
+  </body>
+</html>

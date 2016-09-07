@@ -1,0 +1,7 @@
+<% current_site.itemfields.each do |i| %>
+    <div class="input-group input-group-sm">
+        <span class="input-group-addon" style="width:100px;"><%= i.name %></span>
+        <%= text_field_tag('fields[' + encrypt(i.id) + ']', item.fieldoptions.where(:itemfield_id => i.id).map(&:name).join(","), class: 'form-control tokenize') %>
+    </div>
+    <br/>
+<% end %>

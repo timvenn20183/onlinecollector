@@ -1,0 +1,24 @@
+<button type="button" class="btn btn-primary btn-sm additem">Add item</button>
+<br/>
+<table class="table">
+    <thead>
+        <th><%= I18n.t('item.string.collectionid') %></th>
+        <th><%= I18n.t('item.string.name') %></th>
+    </thead>
+    <tbody>
+    <% items.each do |i| %>
+        <tr id="<%= i.slug %>" class="item pointer">
+            <td><%= i.collectionid %></td>
+            <td><%= i.name %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+<script>
+    $('.item').click(function(event) {
+        window.location.replace('/item/' + $(this).attr('id') + '/edit');
+    });
+    $('.additem').click(function() {
+        window.location.replace('/item/new');
+    });
+</script>

@@ -16,10 +16,13 @@ Rails.application.routes.draw do
     get '/activation', to: 'activation#index'
     get '/profile', to: 'admin#profile'
     get '/admin', to: 'admin#index'
-    get '/items/new', to: 'items#new'
+    get '/admin/items', to: 'admin#items'
+    get '/admin/fields', to: 'admin#fields'
+    get '/admin/profile', to: 'admin#profile'
+    get '/item/new', to: 'items#new'
     get '/item/:slug', to: 'items#show'
     get '/item/:slug/edit', to: 'items#edit'
-    post '/items', to: 'items#create'
     post '/items/update', to: 'items#update'
+    post '/items/create', to: 'items#create'
 
 end

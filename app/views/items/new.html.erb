@@ -1,7 +1,1 @@
-<%= form_for(@item) do |f| %>
-    <%= f.hidden_field :site_id %>
-    <%= f.text_field :name %>
-    <%= f.text_field :collectionid %>
-    <%= f.text_area :note %>
-    <%= f.submit %>
-<% end %>
+<%= render partial: 'items/new', locals: {item: @item} %>

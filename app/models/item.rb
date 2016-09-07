@@ -7,6 +7,7 @@ class Item < ApplicationRecord
     belongs_to :site, required: true
     has_many :itemfields, through: :fieldoptions
     has_and_belongs_to_many :fieldoptions
+    has_many :imagefiles
 
     friendly_id :name, use: :scoped, scope: :site_id
 

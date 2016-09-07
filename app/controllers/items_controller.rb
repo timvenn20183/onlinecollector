@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
     before_filter :check_site
     before_filter :must_be_logged_in, :only => [:new, :edit, :create, :update]
 
+    layout 'admin', only: [:new, :create, :edit, :update]
+
     def index
         fieldoption = params[:fieldoption]
         itemfield = params[:itemfield]
@@ -21,11 +23,23 @@ class ItemsController < ApplicationController
     end
 
     def create
-        @item = Item.new
-        if @item.update_attributes(item_params)
-            render :text => @item.inspect
+        @item = Item.new(item_params)
+        @item.site = current_site
+        if @item.save
+            options = []
+            params[:fields].each_pair do |key,value|
+                options << Itemfield.find(decrypt(key)).update_fieldoptions_from_string(value) if !key.blank?
+            end
+            @item.fieldoptions = options.flatten
+            if !params[:newupload].blank?
+                @image = Imagefile.new(name: @item.name, site: current_site, item: @item, image: params[:newupload])
+                @image.save
+            end
+            redirect_to '/admin/items'
+            return
         else
-            render :text => @item.errors.inspect
+            render action: :new
+            return
         end
     end
 
@@ -41,6 +55,14 @@ class ItemsController < ApplicationController
             options << Itemfield.find(decrypt(key)).update_fieldoptions_from_string(value) if !key.blank?
         end
         @item.fieldoptions = options.flatten
+        if !params[:newupload].blank?
+            @image = Imagefile.new
+            @image.image = params[:newupload]
+            @image.site = current_site
+            @image.item = @item
+            @image.name = @item.name
+            @image.save
+        end
         render action: :edit
     end
 

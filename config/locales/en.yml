@@ -25,6 +25,12 @@ en:
             collectionid: "Collection ID"
             name: "Name"
             note: "Note"
+    admin:
+        menu:
+            dashboard: "Dashboard"
+            items: "Items"
+            fields: "Fields"
+            profile: "Profile"
     itemfield:
         validation:
             name: "Please provide a name for this item field."
