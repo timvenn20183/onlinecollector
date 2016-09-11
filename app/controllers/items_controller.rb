@@ -55,21 +55,16 @@ class ItemsController < ApplicationController
             options << Itemfield.find(decrypt(key)).update_fieldoptions_from_string(value) if !key.blank?
         end
         @item.fieldoptions = options.flatten
-        if !params[:newupload].blank?
-            @image = Imagefile.new
-            @image.image = params[:newupload]
-            @image.site = current_site
-            @image.item = @item
-            @image.name = @item.name
-            @image.save
-        end
-        render action: :edit
+        Imagefile.new_image(@item, params[:newupload])
+        Imagefile.update_details(current_site,params[:imagefile])
+
+        redirect_to '/item/' + @item.slug + '/edit'
     end
 
     private
 
     def item_params
-        params.require(:item).permit(:name, :note, :collectionid, :site_id)
+        params.require(:item).permit(:name, :note, :collectionid, :site_id, :acquired_date)
     end
 
 end

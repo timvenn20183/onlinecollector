@@ -1,0 +1,41 @@
+<div class="input-group input-group-sm">
+        <span class="btn btn-primary btn-file">
+            New image <%= file_field_tag 'newupload', class: 'form-control-file'%>
+        </span>
+        <span id="newupload_name"></span>
+</div>
+<br/>
+    <% item.imagefiles.each do |i| %>
+        <div class="col-md-4">
+            <div class="card text-xs-center <%= "card-outline-primary" if item.prefs[:default_image] == i.slug %>">
+                <div class="card-block">
+                    <img src="<%= i.image.thumbnail.url %>" class="card-img-top" alt="<%= i.name %>">
+                    <br/>
+                    <br/>
+                    <p class="card-title"><input type="text" name="imagefile[<%= i.slug %>]" class="form-control fileinput" value="<%= i.name %>"></input></p>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <% if item.prefs[:default_image] != i.slug %>
+                        <button type="button" class="btn btn-secondary default_button" id="<%= i.slug %>">Default</button>
+                        <% end %>
+                        <button type="button" class="btn btn-secondary remove_button" id="<%= i.slug %>">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+<div class="clearfix"></div>
+
+<script>
+    $('.remove_button').click(function(e) {
+        window.location.replace('/imagefiles/' + $(this).attr('id') + '/remove');
+    });
+    $('.default_button').click(function(e) {
+        window.location.replace('/imagefiles/' + $(this).attr('id') + '/default');
+    });
+    $('input[type=file]').click(function(){
+        $(this).attr("value", "");
+    })
+    $('input[type=file]').change(function(){
+        $('#newupload_name').html($(this).val());
+    })
+</script>

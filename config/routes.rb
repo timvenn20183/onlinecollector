@@ -24,5 +24,7 @@ Rails.application.routes.draw do
     get '/item/:slug/edit', to: 'items#edit'
     post '/items/update', to: 'items#update'
     post '/items/create', to: 'items#create'
+    get '/imagefiles/:id/remove', to: 'imagefiles#remove'
+    get '/imagefiles/:id/default', to: 'imagefiles#default'
 
 end

@@ -9,6 +9,9 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.date :removed_date
       t.string :collectionid
       t.text :note
+      t.text :searchstring
+      t.integer :views, default: 0
+      t.text :prefs
       t.timestamps
     end
   end

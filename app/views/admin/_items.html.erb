@@ -1,6 +1,26 @@
-<button type="button" class="btn btn-primary btn-sm additem">Add item</button>
+<div class="input-group input-group-sm pull-xs-right" style="padding-left:10px; width:200px;">
+    <input type="text" class="form-control pull-right" aria-label="Search" id="searchinput">
+    <span class="input-group-addon pointer search" style="width:25px;">
+        <i class="fa fa-search fa-lg"></i>
+    </span>
+</div>
+
+<button type="button" class="btn btn-primary btn-sm additem pull-xs-right">Add item</button>
+
+<!-- ALPHABETICAL FINDER -->
+<div>
+    <span class="pointer alphabet_letter font-italic" id="all">All</span>&nbsp;-
+    <% alphabet_letters.each do |a| %>
+        <span class="pointer alphabet_letter" id="<%= a %>"><i><%= a %></i></span>&nbsp;
+    <% end %>
+</div>
+<div class="text-xs-center">
+<%= will_paginate items %>
+</div>
+
 <br/>
-<table class="table">
+
+<table class="table table-hover">
     <thead>
         <th><%= I18n.t('item.string.collectionid') %></th>
         <th><%= I18n.t('item.string.name') %></th>
@@ -20,5 +40,19 @@
     });
     $('.additem').click(function() {
         window.location.replace('/item/new');
+    });
+
+    $('.search').click(function() {
+        window.location.replace('/admin/items?search=' + $('#searchinput').val());
+    });
+    $('#searchinput').keypress(function(e) {
+        if(e.which == 13) {
+            window.location.replace('/admin/items?search=' + $('#searchinput').val());
+        }
+    });
+    $('.alphabet_letter').click(function(e) {
+            if ($(this).attr('id') == 'All') { window.location.replace('/admin/items'); }
+            else {
+                window.location.replace('/admin/items?search=' + $(this).attr('id') + '&alphabet_search=true');}
     });
 </script>

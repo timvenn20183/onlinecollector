@@ -7,30 +7,8 @@
 
 <%= form_tag({controller: :items, action: :create}, id: 'create_form', multipart: true) do |f| %>
     <%= hidden_field_tag 'id', encrypt(item.id) %>
-    <div class="input-group input-group-sm">
-        <span class="input-group-addon" style="width:100px;"><%= I18n.t('item.string.collectionid') %></span>
-        <%= text_field_tag('item[collectionid]', item.collectionid, class: 'form-control') %>
-    </div>
-    <br/>
-    <div class="input-group input-group-sm <%= 'has-danger' if !item.errors['name'].blank?%>">
-        <span class="input-group-addon" style="width:100px;"><%= I18n.t('item.string.name') %></span>
-        <%= text_field_tag('item[name]', item.name, class: 'form-control') %>
-    </div>
-        <% if !item.errors['name'].blank? %>
-            <p class="text-danger"><%= item.errors['name'].first %></p>
-        <% end %>
-    <br/>
-    <div class="input-group input-group-sm">
-        <span class="input-group-addon" style="width:100px;"><%= I18n.t('item.string.note') %></span>
-        <%= text_area_tag('item[note]', item.note, class: 'form-control', rows: 5) %>
-    </div>
-    <br/>
-    <%= render partial: 'items/fields', locals: {item: item} %>
-    <br/>
-    <div class="input-group input-group-sm">
-        <%= file_field_tag 'newupload', class: 'form-control-file' %>
-    </div>
-    <br/>
+
+    <%= render partial: 'items/form', locals: {item: item} %>
     <p class="text-xs-right"><%= submit_tag("Add" , class: 'btn btn-primary btn-sm invisible', id: 'submit_button') %></p>
 <% end %>
 <script>
@@ -39,5 +17,14 @@ $('#create_form').change(function() {
 })
 
 $('.tokenize').tokenfield();
-</script>
 
+$(function() {
+    $('input[name="item[acquired_date]"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        locale: {
+          format: 'YYYY-MM-DD'
+        }
+    })
+});
+</script>

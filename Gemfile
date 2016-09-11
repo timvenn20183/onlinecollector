@@ -35,6 +35,11 @@ gem 'bootstrap_tokenfield_rails'
 gem 'rails-assets-tether', '>= 1.1.0'
 gem 'whois', '~> 3.0'
 gem 'mail'
+gem 'faker'
+gem 'will_paginate'
+gem 'mini_magick'
+gem "font-awesome-rails"
+
 #gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7'
 
 # Use Capistrano for deployment

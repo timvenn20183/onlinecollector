@@ -25,6 +25,7 @@ en:
             collectionid: "Collection ID"
             name: "Name"
             note: "Note"
+            acquired_date: "Acquired date"
     admin:
         menu:
             dashboard: "Dashboard"

@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160906194630) do
     t.integer  "site_id"
     t.integer  "item_id"
     t.string   "image"
+    t.string   "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,8 +67,11 @@ ActiveRecord::Schema.define(version: 20160906194630) do
     t.date     "removed_date"
     t.string   "collectionid"
     t.text     "note"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "searchstring"
+    t.integer  "views",                     default: 0
+    t.text     "prefs"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "sites", force: :cascade do |t|
