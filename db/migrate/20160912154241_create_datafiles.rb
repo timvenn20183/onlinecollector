@@ -9,5 +9,7 @@ class CreateDatafiles < ActiveRecord::Migration[5.0]
       t.text :filetype
       t.timestamps
     end
+    add_index :datafiles, :site_id
+    add_index :datafiles, :item_id
   end
 end

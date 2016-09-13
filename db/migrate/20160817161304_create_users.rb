@@ -9,5 +9,6 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.integer :login_failures => 0
       t.timestamps
     end
+    add_index :users, :site_id
   end
 end

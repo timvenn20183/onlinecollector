@@ -5,8 +5,8 @@ class CreateItemfields < ActiveRecord::Migration[5.0]
       t.string :slug
       t.integer :site_id
       t.boolean :required, :default => false
-
       t.timestamps
     end
+    add_index :itemfields, :site_id
   end
 end
