@@ -9,6 +9,7 @@ class Site < ApplicationRecord
     has_many :fieldoptions
     has_many :users
     has_many :imagefiles
+    has_many :datafiles
 
     validates :subdomain, presence: {message: I18n.t('site.validation.subdomain.presence')}
     validates :subdomain, uniqueness: {message: I18n.t('site.validation.subdomain.uniqueness')}

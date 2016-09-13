@@ -5,11 +5,10 @@
     </span>
 </div>
 
-<button type="button" class="btn btn-primary btn-sm additem pull-xs-right">Add item</button>
+<button type="button" class="btn btn-primary btn-sm additem pull-xs-right"><%= I18n.t('admin.button.additem.') %></button>
 
-<!-- ALPHABETICAL FINDER -->
 <div>
-    <span class="pointer alphabet_letter font-italic" id="all">All</span>&nbsp;-
+    <span class="pointer alphabet_letter font-italic" id="all"><%= I18n.t('admin.button.all') %></span>&nbsp;-
     <% alphabet_letters.each do |a| %>
         <span class="pointer alphabet_letter" id="<%= a %>"><i><%= a %></i></span>&nbsp;
     <% end %>
@@ -24,12 +23,16 @@
     <thead>
         <th><%= I18n.t('item.string.collectionid') %></th>
         <th><%= I18n.t('item.string.name') %></th>
+        <th></th>
     </thead>
     <tbody>
     <% items.each do |i| %>
-        <tr id="<%= i.slug %>" class="item pointer">
-            <td><%= i.collectionid %></td>
-            <td><%= i.name %></td>
+        <tr class="pointer">
+            <td class="item" id="<%= i.slug %>"><%= i.collectionid %></td>
+            <td class="item" id="<%= i.slug %>"><%= i.name %></td>
+            <td class="actions">
+                <i class="fa fa-trash fa-lg remove" id="<%= i.slug %>"></i>
+            </td>
         </tr>
     <% end %>
     </tbody>
@@ -54,5 +57,13 @@
             if ($(this).attr('id') == 'All') { window.location.replace('/admin/items'); }
             else {
                 window.location.replace('/admin/items?search=' + $(this).attr('id') + '&alphabet_search=true');}
+    });
+    $('.remove').click(function(e) {
+        var r = confirm("<%= I18n.t('admin.button.removeitem') %>");
+        if (r == true) {
+            window.location.replace('/item/' + $(this).attr('id') + '/remove');
+        } else {
+            return false;
+        }
     });
 </script>

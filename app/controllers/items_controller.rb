@@ -35,6 +35,10 @@ class ItemsController < ApplicationController
                 @image = Imagefile.new(name: @item.name, site: current_site, item: @item, image: params[:newupload])
                 @image.save
             end
+            if !params[:newdatafile].blank?
+                @datafile = Datafile.new(name: @item.name, site: current_site, item: @item, data: params[:newdatafile])
+                @datafile.save
+            end
             redirect_to '/admin/items'
             return
         else
@@ -57,8 +61,22 @@ class ItemsController < ApplicationController
         @item.fieldoptions = options.flatten
         Imagefile.new_image(@item, params[:newupload])
         Imagefile.update_details(current_site,params[:imagefile])
+        Datafile.new_datafile(@item, params[:newdatafile])
+        Datafile.update_details(current_site,params[:datafile])
 
         redirect_to '/item/' + @item.slug + '/edit'
+    end
+
+    def remove
+        item = current_site.items.find_by_slug(params[:slug])
+        item.imagefiles.each do |i|
+            i.destroy
+        end
+        item.datafiles.each do |d|
+            d.destroy
+        end
+        item.destroy
+        redirect_to '/admin/items'
     end
 
     private

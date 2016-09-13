@@ -10,6 +10,7 @@ class Item < ApplicationRecord
     has_many :itemfields, through: :fieldoptions
     has_and_belongs_to_many :fieldoptions
     has_many :imagefiles
+    has_many :datafiles
 
     friendly_id :name, use: :scoped, scope: :site_id
 

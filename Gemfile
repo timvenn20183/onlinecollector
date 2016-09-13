@@ -39,6 +39,7 @@ gem 'faker'
 gem 'will_paginate'
 gem 'mini_magick'
 gem "font-awesome-rails"
+gem 'ruby-filemagic'
 
 #gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7'
 

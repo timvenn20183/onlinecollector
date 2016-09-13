@@ -32,6 +32,10 @@ en:
             items: "Items"
             fields: "Fields"
             profile: "Profile"
+        button:
+            additem: "Add item"
+            all: "All"
+            removeitem: "Are you sure you wish to remove this item ?"
     itemfield:
         validation:
             name: "Please provide a name for this item field."
@@ -45,4 +49,12 @@ en:
             button: "Create collection"
         signin:
             button: "Sign in"
-
+    imagefiles:
+        button:
+            default: "Default"
+            remove: "Remove"
+            newimage: "New image"
+    datafiles:
+        button:
+            newfile: "New data file"
+            remove: "Remove"

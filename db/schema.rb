@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906194630) do
+ActiveRecord::Schema.define(version: 20160912154241) do
+
+  create_table "datafiles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "site_id"
+    t.integer  "item_id"
+    t.string   "data"
+    t.string   "slug"
+    t.text     "filetype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "fieldoptions", force: :cascade do |t|
     t.string   "name"

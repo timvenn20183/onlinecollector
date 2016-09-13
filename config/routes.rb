@@ -22,9 +22,11 @@ Rails.application.routes.draw do
     get '/item/new', to: 'items#new'
     get '/item/:slug', to: 'items#show'
     get '/item/:slug/edit', to: 'items#edit'
+    get '/item/:slug/remove', to: 'items#remove'
     post '/items/update', to: 'items#update'
     post '/items/create', to: 'items#create'
     get '/imagefiles/:id/remove', to: 'imagefiles#remove'
     get '/imagefiles/:id/default', to: 'imagefiles#default'
+    get '/datafiles/:id/remove', to: 'datafiles#remove'
 
 end
