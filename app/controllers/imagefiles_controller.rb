@@ -22,4 +22,5 @@ class ImagefilesController < ApplicationController
         return_path = '/item/' + obj.item.slug + '/edit'
         redirect_to return_path
     end
+
 end

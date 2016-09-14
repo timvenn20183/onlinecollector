@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20160912154241) do
     t.text     "filetype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_datafiles_on_item_id"
+    t.index ["site_id"], name: "index_datafiles_on_site_id"
   end
 
   create_table "fieldoptions", force: :cascade do |t|
@@ -30,6 +32,8 @@ ActiveRecord::Schema.define(version: 20160912154241) do
     t.integer  "site_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["itemfield_id"], name: "index_fieldoptions_on_itemfield_id"
+    t.index ["site_id"], name: "index_fieldoptions_on_site_id"
   end
 
   create_table "fieldoptions_items", id: false, force: :cascade do |t|
@@ -58,6 +62,8 @@ ActiveRecord::Schema.define(version: 20160912154241) do
     t.string   "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_imagefiles_on_item_id"
+    t.index ["site_id"], name: "index_imagefiles_on_site_id"
   end
 
   create_table "itemfields", force: :cascade do |t|
@@ -67,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160912154241) do
     t.boolean  "required",   default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["site_id"], name: "index_itemfields_on_site_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -83,6 +90,7 @@ ActiveRecord::Schema.define(version: 20160912154241) do
     t.text     "prefs"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.index ["site_id"], name: "index_items_on_site_id"
   end
 
   create_table "sites", force: :cascade do |t|
@@ -103,6 +111,7 @@ ActiveRecord::Schema.define(version: 20160912154241) do
     t.string   "appkey"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.index ["site_id"], name: "index_users_on_site_id"
   end
 
   create_table "versions", force: :cascade do |t|

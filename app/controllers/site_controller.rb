@@ -44,7 +44,7 @@ class SiteController < ApplicationController
 
     def signin
         if current_site == nil then
-            render template: 'main/index'
+            render 'main/index'
             return
         else
             render template: 'site/signin', locals: {error: nil}

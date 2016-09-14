@@ -31,18 +31,12 @@ class ItemsController < ApplicationController
                 options << Itemfield.find(decrypt(key)).update_fieldoptions_from_string(value) if !key.blank?
             end
             @item.fieldoptions = options.flatten
-            if !params[:newupload].blank?
-                @image = Imagefile.new(name: @item.name, site: current_site, item: @item, image: params[:newupload])
-                @image.save
-            end
-            if !params[:newdatafile].blank?
-                @datafile = Datafile.new(name: @item.name, site: current_site, item: @item, data: params[:newdatafile])
-                @datafile.save
-            end
+            Imagefile.new_image(@item, params[:newupload])
+            Datafile.new_datafile(@item, params[:newdatafile])
             redirect_to '/admin/items'
             return
         else
-            render action: :new
+            render :new
             return
         end
     end

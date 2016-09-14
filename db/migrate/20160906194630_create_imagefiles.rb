@@ -8,5 +8,7 @@ class CreateImagefiles < ActiveRecord::Migration[5.0]
       t.string :slug
       t.timestamps
     end
+    add_index :imagefiles, :site_id
+    add_index :imagefiles, :item_id
   end
 end

@@ -14,5 +14,6 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.text :prefs
       t.timestamps
     end
+    add_index :items, :site_id
   end
 end
