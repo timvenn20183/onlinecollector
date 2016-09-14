@@ -6,7 +6,7 @@ class SiteController < ApplicationController
 
     def index
         if current_site == nil then
-            render template: 'main/index'
+            render 'main/index'
             return
         end
     end
