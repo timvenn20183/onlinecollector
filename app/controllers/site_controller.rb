@@ -2,7 +2,7 @@ class SiteController < ApplicationController
 
     layout :select_layout
 
-    before_filter :check_site, :except => [:signup, :signup_process, :signin, :signin_process, :index]
+    before_filter :check_site, :except => [:signup, :signup_process, :signin, :signin_process, :index, :terms, :about]
 
     def index
         if current_site == nil then
@@ -12,7 +12,7 @@ class SiteController < ApplicationController
     end
 
     def signup
-        render template: 'site/signup', locals: {site: Site.new, user: User.new}
+        render 'site/signup', locals: {site: Site.new, user: User.new}
     end
 
     def signup_process
@@ -71,6 +71,12 @@ class SiteController < ApplicationController
             set_session(user)
         end
         redirect_to '/'
+    end
+
+    def terms
+    end
+
+    def about
     end
 
     private

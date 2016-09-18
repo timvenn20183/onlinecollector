@@ -28,5 +28,7 @@ Rails.application.routes.draw do
     get '/imagefiles/:id/remove', to: 'imagefiles#remove'
     get '/imagefiles/:id/default', to: 'imagefiles#default'
     get '/datafiles/:id/remove', to: 'datafiles#remove'
+    get '/terms', to: 'site#terms'
+    get '/about', to: 'site#about'
 
 end

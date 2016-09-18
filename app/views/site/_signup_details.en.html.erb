@@ -1,0 +1,36 @@
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <div class="jumbotron">
+                <div class="container">
+                  <%= form_tag({:controller => :site, :action => :signup_process}, class: 'form-signin', :id => 'signup_form') do |f| %>
+                      <h1 class="display-4" style="color:#111;">Online Collectors Website</h1>
+                      <label for="email" class="sr-only">Email address</label>
+                      <input type="email" id="email" name="email" value="<%= user.email %>" class="form-control" placeholder="Email address" required autofocus>
+                      <br/>
+                      <label for="password" class="sr-only">Password</label>
+                      <input type="password" id="password" name="password" class="form-control" placeholder="Password" required autofocus>
+                      <br/>
+                      <label for="confirm" class="sr-only">Confirm password</label>
+                      <input type="password" id="confirm" name="confirm" class="form-control" placeholder="Confirm password" required autofocus>
+                      <br/>
+                      <label for="subdomain" class="sr-only">Subdomain</label>
+                      <input type="text" id="subdomain" class="form-control" placeholder="Subdomain" required>
+                      <br/>
+                      <button class="btn btn-md btn-primary" type="submit">Sign up</button>&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="/" role="button">No thanks</a>
+                      <br/><br/>
+                      <p style="color:#111;">Use of this site is subject to the following <a href="terms" class="text-primary">terms and conditions</a></p>
+                  <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% if !site.errors.blank? then %>
+    <%= site.errors.messages %>
+<% end %>
+<% if !user.errors.blank? then %>
+    <%= user.errors.messages %>
+<% end %>
+

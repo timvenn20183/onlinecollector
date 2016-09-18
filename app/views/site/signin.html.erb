@@ -1,7 +1,6 @@
-<%= form_tag({:controller => :site, :action => :signin_process}, :id => 'signin_form') do |f| %>
+<%= form_tag({:controller => :site, :action => :signin_process}, {:id => 'signin_form'}) do |f| %>
 
-<%= render 'signin_details' %>
+<%= render partial: 'signin_details' %>
 
-<button type="submit"><%= I18n.t('forms.signin.button') %></button>
 <% end %>
 

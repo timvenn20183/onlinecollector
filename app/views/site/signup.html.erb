@@ -1,6 +1,1 @@
-<%= form_tag({:controller => :site, :action => :signup_process}, :id => 'signup_form') do |f| %>
-
-<%= render 'signup_details', locals: {site: site, user: user} %>
-
-<button type="submit"><%= I18n.t('forms.signup.button') %></button>
-<% end %>
+<%= render partial: 'signup_details', locals: {site: site, user: user} %>
